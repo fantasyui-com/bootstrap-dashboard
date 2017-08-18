@@ -7,6 +7,8 @@ const EventEmitter = require('events');
 const fs = require('fs');
 const path = require('path');
 
+const faker = require('faker');
+
 class MyEmitter extends EventEmitter {}
 const ee = new MyEmitter();
 
@@ -53,7 +55,7 @@ var appTitle = new Vue({
 * * */
 
 $(function(){
-  $('title').text(pkg.name);
+  $('title').text(pkg.productName||pkg.name);
 });
 
 
@@ -68,6 +70,66 @@ ee.on('document-drop', (data) => {
 });
 
 
+Vue.component('card', {
+
+  template: `
+    <div v-bind:class="cardClass">
+      <div class="card-header">{{header}}</div>
+      <div class="card-body">
+        <h4 class="card-title">{{title}}</h4>
+        <p class="card-text">{{text}}</p>
+      </div>
+    </div>
+  `,
+
+  props: ['level','header','title','text'],
+
+  data: function () {
+    return {
+      cardClass: 'card text-white bg-warning mb-3',
+      cardClasses: [
+        'card text-white bg-success mb-3',
+        'card text-white bg-info mb-3',
+        'card text-white bg-warning mb-3',
+        'card text-white bg-danger mb-3',
+      ]
+    }
+  },
+
+  created: function(){
+
+    setInterval(()=>{
+      this.level++;
+      if(this.level > (this.cardClasses.length-1)) this.level = 0;
+      this.cardClass = this.cardClasses[this.level];
+    },500);
+
+  }
+});
+
+var workspace = new Vue({
+  el: '#workspace',
+  data: {
+    cards: [
+      { id:0,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:'Last Run: '+faker.date.past(), level: 0},
+      { id:1,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:'Last Run: '+faker.date.past(), level: 1},
+      { id:2,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:'Last Run: '+faker.date.past(), level: 2},
+      { id:3,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:'Last Run: '+faker.date.past(), level: 3},
+      { id:4,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:'Last Run: '+faker.date.past(), level: 0},
+      { id:5,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:'Last Run: '+faker.date.past(), level: 1},
+      { id:6,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:'Last Run: '+faker.date.past(), level: 2},
+      { id:7,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:'Last Run: '+faker.date.past(), level: 3},
+      { id:8,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:'Last Run: '+faker.date.past(), level: 0},
+      { id:9,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:'Last Run: '+faker.date.past(), level: 1},
+      { id:10, header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:'Last Run: '+faker.date.past(), level: 2},
+      { id:11, header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:'Last Run: '+faker.date.past(), level: 3},
+      { id:12, header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:'Last Run: '+faker.date.past(), level: 0},
+      { id:13, header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:'Last Run: '+faker.date.past(), level: 1},
+      { id:14, header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:'Last Run: '+faker.date.past(), level: 2},
+    ]
+  },
+
+})
 
 
 /* * *

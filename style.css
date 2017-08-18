@@ -4,9 +4,11 @@ html {
 
 body {
   padding: 1rem;
-}
-
-body {
   background: linear-gradient(135deg, #CFCFCF 0%, #E5E5E5 100%);
   min-height: 100vh;
+}
+
+.card {
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
+  transition: .2s all;
 }
