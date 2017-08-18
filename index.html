@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue"></script>
+
+  </head>
+
+  <body>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+
+<div class="card-columns">
+
+          <div class="card text-white bg-warning mb-3">
+            <div class="card-header">example.com</div>
+            <div class="card-body">
+              <h4 class="card-title">Server Failure</h4>
+              <p class="card-text">Unable to connect to the mail server</p>
+            </div>
+          </div>
+
+          <div class="card border-info mb-3">
+            <div class="card-header">Header</div>
+            <div class="card-body text-info">
+              <h4 class="card-title">Info card title</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+
+
+          <div class="card text-white bg-info mb-3">
+            <div class="card-header">example.com</div>
+            <div class="card-body">
+              <h4 class="card-title">Server Ping: Slow</h4>
+              <p class="card-text">Unable to connect to the mail server</p>
+            </div>
+          </div>
+
+          <div class="card border-warning mb-3">
+  <div class="card-header">Header</div>
+  <div class="card-body text-warning">
+    <h4 class="card-title">Warning card title</h4>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+</div>
+
+          <div class="card text-white bg-primary mb-3">
+            <div class="card-header">note</div>
+            <div class="card-body">
+              <h4 class="card-title">Alpha Quality</h4>
+              <p class="card-text">Wait a few days</p>
+            </div>
+          </div>
+
+          <div class="card border-light mb-3">
+            <div class="card-header">Header</div>
+            <div class="card-body">
+              <h4 class="card-title">Light card title</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+          <div class="card border-dark mb-3">
+            <div class="card-header">Header</div>
+            <div class="card-body text-dark">
+              <h4 class="card-title">Dark card title</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+
+          <div class="card border-success mb-3">
+            <div class="card-header">Header</div>
+            <div class="card-body text-success">
+              <h4 class="card-title">Success card title</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+          </div>
+
+          <div class="card text-white bg-secondary mb-3">
+            <div class="card-header">All Systems Nominal</div>
+            <div class="card-body">
+              <h4 class="card-title">Alpha Quality</h4>
+              <p class="card-text">Wait a few days</p>
+            </div>
+          </div>
+
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    <div style="display: none;" class="container-fluid">
+      <div class="row">
+        <div class="col p-3">
+
+          <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+          <div id="app-title">
+            <h3>
+              {{name}}
+              <div class="small text-muted" style="font-size: .9rem;">{{description}}</div>
+            </h3>
+          </div>
+          <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+        </div>
+        <div class="col">
+
+          <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+          <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+
+        </div>
+      </div>
+      <div class="row">
+
+        <div class="col">
+
+            <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+              <div id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="card">
+                  <div class="card-header" role="tab" id="headingOne">
+                    <h5 class="mb-0">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Collapsible Group Item #1
+                      </a>
+                    </h5>
+                  </div>
+
+                  <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+                    <div class="card-block">
+                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" role="tab" id="headingTwo">
+                    <h5 class="mb-0">
+                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Collapsible Group Item #2
+                      </a>
+                    </h5>
+                  </div>
+                  <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div class="card-block">
+                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" role="tab" id="headingThree">
+                    <h5 class="mb-0">
+                      <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Collapsible Group Item #3
+                      </a>
+                    </h5>
+                  </div>
+                  <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+                    <div class="card-block">
+                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+
+        </div>
+
+        <div class="col">
+
+          <!-- All of the Node.js APIs are available in this renderer process. -->
+
+
+
+
+
+
+          <ul class="list-group mb-3">
+            <li class="list-group-item active"> Node.js <script>document.write(process.versions.node)</script> </li>
+            <li class="list-group-item"> Chromium <script>document.write(process.versions.chrome)</script> </li>
+            <li class="list-group-item"> Electron <script>document.write(process.versions.electron)</script> </li>
+            <li class="list-group-item"> jQuery 3.1.1.slim </li>
+            <li class="list-group-item"> Vue <script>document.write(Vue.version)</script> </li>
+          </ul>
+
+          <form id="emitter-example-form" class="bg-faded p-3">
+            <div class="form-group row">
+              <label class="col-sm-12 col-form-label">Event Emitter Example</label>
+            </div>
+            <div class="form-group">
+              <label for="exampleSelect1">Select Event</label>
+              <select class="form-control" id="event-name-select">
+                <option>background-color</option>
+                <option>foreground-color</option>
+              </select>
+            </div>
+            <div class="form-group row">
+              <label for="example-color-input" class="col-2 col-form-label">Select Color</label>
+              <div class="col-10">
+                <input class="form-control" type="color" value="#297ce8" id="example-color-input">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Emit</button>
+          </form>
+
+        </div>
+        <div class="col">
+
+          <div class="card">
+            <img class="card-img-top" src="https://unsplash.it/200/300" alt="Card image cap">
+            <div class="card-block">
+              <h4 class="card-title">Card title</h4>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+
+
+    </div>
+
+
+
+
+
+  </body>
+
+  <script>
+    // You can also require other files to run in this process
+
+    require('./renderer.js');
+
+  </script>
+
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "bootstrap-dashboard",
+  "version": "1.0.0",
+  "description": "Fully Functional Pure Bootstrap Dashboard, powered by EventEmitter, npm, Node and Electron.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fantasyui-com/bootstrap-dashboard.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fantasyui-com/bootstrap-dashboard/issues"
+  },
+  "homepage": "https://github.com/fantasyui-com/bootstrap-dashboard#readme"
+}
