@@ -7,6 +7,8 @@ const EventEmitter = require('events');
 const fs = require('fs');
 const path = require('path');
 
+const civilized = require('civilized');
+
 const faker = require('faker');
 
 class MyEmitter extends EventEmitter {}
@@ -97,11 +99,11 @@ Vue.component('card', {
   },
 
   created: function(){
-
+    let level = this.level;
     setInterval(()=>{
-      this.level++;
-      if(this.level > (this.cardClasses.length-1)) this.level = 0;
-      this.cardClass = this.cardClasses[this.level];
+      level++;
+      if(level > (this.cardClasses.length-1)) level = 0;
+      this.cardClass = this.cardClasses[level];
     },500);
 
   }
@@ -111,23 +113,30 @@ var workspace = new Vue({
   el: '#workspace',
   data: {
     cards: [
-      { id:0,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:'Last Run: '+faker.date.past(), level: 0},
-      { id:1,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:'Last Run: '+faker.date.past(), level: 1},
-      { id:2,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:'Last Run: '+faker.date.past(), level: 2},
-      { id:3,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:'Last Run: '+faker.date.past(), level: 3},
-      { id:4,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:'Last Run: '+faker.date.past(), level: 0},
-      { id:5,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:'Last Run: '+faker.date.past(), level: 1},
-      { id:6,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:'Last Run: '+faker.date.past(), level: 2},
-      { id:7,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:'Last Run: '+faker.date.past(), level: 3},
-      { id:8,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:'Last Run: '+faker.date.past(), level: 0},
-      { id:9,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:'Last Run: '+faker.date.past(), level: 1},
-      { id:10, header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:'Last Run: '+faker.date.past(), level: 2},
-      { id:11, header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:'Last Run: '+faker.date.past(), level: 3},
-      { id:12, header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:'Last Run: '+faker.date.past(), level: 0},
-      { id:13, header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:'Last Run: '+faker.date.past(), level: 1},
-      { id:14, header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:'Last Run: '+faker.date.past(), level: 2},
+      { id:0,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:faker.date.past().toString(), level: 0},
+      { id:1,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:faker.date.past().toString(), level: 1},
+      { id:2,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:faker.date.past().toString(), level: 2},
+      { id:3,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:faker.date.past().toString(), level: 3},
+      { id:4,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:faker.date.past().toString(), level: 0},
+      { id:5,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:faker.date.past().toString(), level: 1},
+      { id:6,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:faker.date.past().toString(), level: 2},
+      { id:7,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:faker.date.past().toString(), level: 3},
+      { id:8,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:faker.date.past().toString(), level: 0},
+      { id:9,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:faker.date.past().toString(), level: 1},
+      { id:10, header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:faker.date.past().toString(), level: 2},
+      { id:11, header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:faker.date.past().toString(), level: 3},
+
     ]
   },
+
+  created: function(){
+
+    let story = civilized(__dirname + '/STORY.md').filter(i=>i.name==='monitor-server');
+    console.log(story)
+    story.forEach((item,index)=>{
+      this.cards.unshift( { id:(99+index), header:`Monitoring ${item.data.url} (${item.data.interval} min.)`, title: item.data.title, text:faker.date.past().toString(), level: 2} );
+    });
+  }
 
 })
 

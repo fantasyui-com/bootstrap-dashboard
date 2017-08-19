@@ -1,8 +1,8 @@
 Code Generation Dashboard
 ---
 
-Card Primary Server monitors example.com health every 3 minutes.
+Card Primary Server monitors www.example.com health every 1 minutes.
 
-Card Sample Web Server #1 monitors  example.com server availability every 20 minutes.
+Card Secondary Server monitors ww2.example.com health every 2 minutes.
 
-Card Sample Web Server #2 monitors  example.com server availability every 20 minutes.
+Card Mail Server monitors mail.example.com health every 3 minutes.

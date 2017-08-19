@@ -1,7 +1,7 @@
 {
   "name": "bootstrap-dashboard",
   "productName": "Bootstrap Dashboard",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Fully Functional Pure Bootstrap Dashboard, powered by EventEmitter, npm, Node and Electron.",
   "main": "main.js",
   "scripts": {
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/fantasyui-com/bootstrap-dashboard#readme",
   "dependencies": {
+    "civilized": "^1.0.2",
     "faker": "^4.1.0"
   }
 }
