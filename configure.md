@@ -1,11 +1,19 @@
 Code Generation Dashboard
 ---
 
-# E-Commerce Sites
+The purpose of the statements below is Project Manager comfort and configuration file readability.
+
+Note to Project Managers, when adding new entries, use copy and paste to avoid typos.
+
+# Dashboard Configuration
+
+## Our Public Network
+
+### E-Commerce Sites
 
 Card eSelr Server monitors https://eselr.com source code every 240 seconds for the presence of Google Analytics ID UA-99123895-1.
 
-# Fantasy UI Network
+### Fantasy UI Network
 
 Card Fantasy UI Server monitors https://fantasyui.com source code every 240 seconds for the presence of Google Analytics ID UA-84809846-1.
 
@@ -15,7 +23,7 @@ Card FUI GUI Server monitors https://fuigui.com source code every 240 seconds fo
 
 Card FUIKIT Server monitors https://fuikit.com source code every 240 seconds for the presence of Google Analytics ID UA-84809846-1.
 
-# Premium Fantasy UI Network
+### Premium Fantasy UI Network
 
 Note: these are to be extended with further research.
 
@@ -23,7 +31,7 @@ Card Bootstrap.Cards Server monitors https://bootstrap.cards source code every 2
 
 Card Hominus Nocturna Server monitors https://hominusnocturna.com source code every 240 seconds for the presence of Google Analytics ID UA-84809846-1.
 
-# Ongoing Projects
+### Ongoing Projects
 
 Note: these are going to be frequently down as development continues.
 
