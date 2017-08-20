@@ -29,7 +29,7 @@
         <div class="col">
 
           <div v-cloak id="workspace" class="card-columns">
-            <card v-for="card in cards" :key="card.id" v-bind:level="card.level" v-bind:header="card.header" v-bind:title="card.title" v-bind:text="card.text"></card>
+            <card v-for="card in cards" :key="card.id" v-bind:defcon="card.defcon" v-bind:header="card.header" v-bind:title="card.title" v-bind:text="card.text" v-bind:error="card.error"></card>
           </div>
 
         </div>

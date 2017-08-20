@@ -7,6 +7,8 @@ const EventEmitter = require('events');
 const fs = require('fs');
 const path = require('path');
 
+const request = require('request');
+
 const civilized = require('civilized');
 
 const faker = require('faker');
@@ -76,66 +78,101 @@ Vue.component('card', {
 
   template: `
     <div v-bind:class="cardClass">
-      <div class="card-header">{{header}}</div>
+      <div class="card-header">{{header}} &middot; defcon-{{defcon}} - {{defconMessage}}</div>
       <div class="card-body">
         <h4 class="card-title">{{title}}</h4>
-        <p class="card-text">{{text}}</p>
+        <p class="card-text">{{text}} </p>
+        <p class="card-text">{{error}}</p>
       </div>
     </div>
   `,
 
-  props: ['level','header','title','text'],
+  props: ['defcon','header','title','text', 'error'],
 
   data: function () {
     return {
-      cardClass: 'card text-white bg-warning mb-3',
+
+
+      defconMessages: [
+        /* DEFCON 0 */ 'One Moment...',
+        /* DEFCON 1 */ 'End of the world',
+        /* DEFCON 2 */ 'Um, problems',
+        /* DEFCON 3 */ 'Something is off',
+        /* DEFCON 4 */ 'No Problemo',
+        /* DEFCON 5 */ 'All is well',
+      ],
       cardClasses: [
-        'card text-white bg-success mb-3',
-        'card text-white bg-info mb-3',
-        'card text-white bg-warning mb-3',
-        'card text-white bg-danger mb-3',
+        /* DEFCON 0 */ 'card fadeds mb-3',
+        /* DEFCON 1 */ 'card text-white bg-secondary mb-3',
+        /* DEFCON 2 */ 'card text-white bg-danger mb-3',
+        /* DEFCON 3 */ 'card text-dark bg-warning mb-3',
+        /* DEFCON 4 */ 'card text-white bg-success mb-3',
+        /* DEFCON 5 */ 'card text-white bg-primary mb-3',
       ]
     }
+
   },
 
-  created: function(){
-    let level = this.level;
-    setInterval(()=>{
-      level++;
-      if(level > (this.cardClasses.length-1)) level = 0;
-      this.cardClass = this.cardClasses[level];
-    },500);
+  computed: {
 
-  }
+   defconMessage: function(){
+     return this.defconMessages[this.defcon];
+   },
+   cardClass: function(){
+     return this.cardClasses[this.defcon];
+   }
+
+ }
+
 });
 
 var workspace = new Vue({
   el: '#workspace',
   data: {
     cards: [
-      { id:0,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:faker.date.past().toString(), level: 0},
-      { id:1,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:faker.date.past().toString(), level: 1},
-      { id:2,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:faker.date.past().toString(), level: 2},
-      { id:3,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:faker.date.past().toString(), level: 3},
-      { id:4,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:faker.date.past().toString(), level: 0},
-      { id:5,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:faker.date.past().toString(), level: 1},
-      { id:6,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:faker.date.past().toString(), level: 2},
-      { id:7,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:faker.date.past().toString(), level: 3},
-      { id:8,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:faker.date.past().toString(), level: 0},
-      { id:9,  header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:faker.date.past().toString(), level: 1},
-      { id:10, header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:faker.date.past().toString(), level: 2},
-      { id:11, header:faker.company.companyName(), title: faker.hacker.ingverb() + ' ' + faker.hacker.noun(), text:faker.date.past().toString(), level: 3},
+
 
     ]
   },
 
   created: function(){
 
-    let story = civilized(__dirname + '/STORY.md').filter(i=>i.name==='monitor-server');
-    console.log(story)
+    let story = civilized(__dirname + '/configure.md').filter(i=>i.name==='monitor-server');
+
     story.forEach((item,index)=>{
-      this.cards.unshift( { id:(99+index), header:`Monitoring ${item.data.url} (${item.data.interval} min.)`, title: item.data.title, text:faker.date.past().toString(), level: 2} );
+
+      let thing = { id:this.cards.length, header:`${item.data.url}`, title: item.data.title, text:item.data.input, defcon: 0};
+      let exec = function(){
+        request(item.data.url, function (error, response, body) {
+
+          if(body && body.match(new RegExp(item.data.string))){
+          thing.defcon = 4;
+          thing.error = ""; // clears error message
+
+
+          }else if(error.code === 'ENOTFOUND'){
+            thing.defcon = 1;
+            thing.error = `Error, get address info returned error NOT FOUND, is ${item.data.url} hosted anywhere?`;
+
+          }else if(error){
+            thing.defcon = 2;
+            thing.error = error.message;
+
+          }else{
+            thing.defcon = 2;
+            thing.error = error.message;
+          }
+        });
+      }
+      thing.intervalId = setInterval(exec, item.data.interval*1000)
+      exec();
+
+      this.cards.push( thing );
+
+
     });
+
+
   }
 
 })
