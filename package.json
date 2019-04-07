@@ -1,7 +1,7 @@
 {
   "name": "bootstrap-dashboard",
   "productName": "Bootstrap Dashboard",
-  "version": "1.0.6",
+  "version": "1.1.0",
   "description": "Fully Functional Pure Bootstrap Dashboard, powered by EventEmitter, npm, Node and Electron.",
   "main": "main.js",
   "scripts": {
