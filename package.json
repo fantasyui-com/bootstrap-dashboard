@@ -21,6 +21,6 @@
   "dependencies": {
     "civilized": "^1.1.0",
     "faker": "^4.1.0",
-    "request": "^2.81.0"
+    "request": "^2.88.0"
   }
 }
