@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/fantasyui-com/bootstrap-dashboard#readme",
   "dependencies": {
-    "civilized": "^1.1.0",
+    "civilized": "^1.2.0",
     "faker": "^4.1.0",
     "request": "^2.88.0"
   }
